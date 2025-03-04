@@ -1,14 +1,13 @@
-import { reactRouter } from "@react-router/dev/vite";
-import autoprefixer from "autoprefixer";
-import tailwindcss from "tailwindcss";
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { reactRouter } from '@react-router/dev/vite';
+import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
+  esbuild: {
+    supported: {
+      'top-level-await': true,
     },
   },
-  plugins: [reactRouter(), tsconfigPaths()],
+  plugins: [reactRouter(), tsconfigPaths(), tailwindcss()],
 });
